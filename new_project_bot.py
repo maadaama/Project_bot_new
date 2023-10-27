@@ -3,7 +3,8 @@ from telegram.ext import ConversationHandler, CallbackContext, CommandHandler, C
     MessageHandler, Filters
 from key import TOKEN
 
-WAIT_TAKE, WAIT_SEE_AVAILABILITY, WAIT_PUT, WAIT_TYPE, WAIT_TYPE1, WAIT_TYPE2, WAIT_TYPE3 = range(7)
+WAIT_TAKE, WAIT_SEE_AVAILABILITY, WAIT_PUT, WAIT_TYPE_WATER, WAIT_TYPE_ROPES, WAIT_TYPE_EVERYDAY_LIFE = range(6)
+WAIT_TYPE_MEDICINE = range(6, 6)
 
 
 def main():
@@ -20,7 +21,8 @@ def main():
     dispatcher.add_handler(CommandHandler('start', do_start))
     dispatcher.add_handler(CommandHandler('help', do_help))
     dispatcher.add_handler(CommandHandler('register', register))
-    dispatcher.add_handler(CommandHandler('take', ask_take))
+    # dispatcher.add_handler(CommandHandler('take', ask_take))
+    dispatcher.add_handler(take_handler)
     dispatcher.add_handler(CommandHandler('see_availability', ask_see_availability))
     dispatcher.add_handler(CommandHandler('put', ask_put))
 
@@ -65,7 +67,7 @@ def ask_take(update: Update, context: CallbackContext):
         [InlineKeyboardButton('Быт', callback_data='Быт'),
          InlineKeyboardButton('Медицина', callback_data='Медицина')]
     ]
-    
+
     take = InlineKeyboardMarkup(buttons)  # клавиатура - объект класса ReplyKeyboardMarkup
     text = 'Какое направление Вас интересует?'
     update.message.reply_text(text, reply_markup=take)
@@ -74,38 +76,39 @@ def ask_take(update: Update, context: CallbackContext):
 
 
 def get_take(update: Update, context: CallbackContext):
+
     query = update.callback_query
     query.answer()
     if query.data == 'Вода':
-        return ask_type(update, context)
+        return ask_type_water(update, context)
     elif query.data == 'Веревки':
-        return ask_type1(update, context)
+        return ask_type_ropes(update, context)
     elif query.data == 'Быт':
-        return ask_type2(update, context)
+        return ask_type_everyday_life(update, context)
     elif query.data == 'Медицина':
-        return ask_type3(update, context)
+        return ask_type_medicine(update, context)
 
 
-def ask_type(update: Update, context: CallbackContext):
+def ask_type_water(update: Update, context: CallbackContext):
     buttons = [
         [InlineKeyboardButton('Снаряжение', callback_data='Снаряжение'),
          InlineKeyboardButton('Судна', callback_data='Судна')]
     ]
 
     query = update.callback_query
-    type = InlineKeyboardMarkup(buttons)  # клавиатура - объект класса ReplyKeyboardMarkup
+    type_water = InlineKeyboardMarkup(buttons)  # клавиатура - объект класса ReplyKeyboardMarkup
     text = 'Что Вас интересует?'
-    query.edit_message_text(text, reply_markup=type)
+    query.edit_message_text(text, reply_markup=type_water)
 
-    return WAIT_TYPE
+    return WAIT_TYPE_WATER
 
 
-def get_type(update: Update, context: CallbackContext):
+def get_type_water(update: Update, context: CallbackContext):
     query = update.callback_query
     query.answer()
 
 
-def ask_type1(update: Update, context: CallbackContext):
+def ask_type_ropes(update: Update, context: CallbackContext):
     buttons = [
         [InlineKeyboardButton('Системы', callback_data='Системы'),
          InlineKeyboardButton('Веревки', callback_data='Веревки'),
@@ -113,19 +116,19 @@ def ask_type1(update: Update, context: CallbackContext):
     ]
 
     query = update.callback_query
-    type1 = InlineKeyboardMarkup(buttons)  # клавиатура - объект класса ReplyKeyboardMarkup
+    type_ropes = InlineKeyboardMarkup(buttons)  # клавиатура - объект класса ReplyKeyboardMarkup
     text = 'Что Вас интересует?'
-    query.edit_message_text(text, reply_markup=type1)
+    query.edit_message_text(text, reply_markup=type_ropes)
 
-    return WAIT_TYPE1
+    return WAIT_TYPE_ROPES
 
 
-def get_type1(update: Update, context: CallbackContext):
+def get_type_ropes(update: Update, context: CallbackContext):
     query = update.callback_query
     query.answer()
 
 
-def ask_type2(update: Update, context: CallbackContext):
+def ask_type_everyday_life(update: Update, context: CallbackContext):
     buttons = [
         [InlineKeyboardButton('Ночлег', callback_data='Ночлег'),
          InlineKeyboardButton('Еда', callback_data='Еда'),
@@ -133,33 +136,33 @@ def ask_type2(update: Update, context: CallbackContext):
     ]
 
     query = update.callback_query
-    type2 = InlineKeyboardMarkup(buttons)  # клавиатура - объект класса ReplyKeyboardMarkup
+    type_everyday_life = InlineKeyboardMarkup(buttons)  # клавиатура - объект класса ReplyKeyboardMarkup
     text = 'Что Вас интересует?'
-    query.edit_message_text(text, reply_markup=type2)
+    query.edit_message_text(text, reply_markup=type_everyday_life)
 
-    return WAIT_TYPE2
+    return WAIT_TYPE_EVERYDAY_LIFE
 
 
-def get_type2(update: Update, context: CallbackContext):
+def get_type_everyday_life(update: Update, context: CallbackContext):
     query = update.callback_query
     query.answer()
 
 
-def ask_type3(update: Update, context: CallbackContext):
+def ask_type_medicine(update: Update, context: CallbackContext):
     buttons = [
         [InlineKeyboardButton('Травмы', callback_data='Травмы'),
          InlineKeyboardButton('Обезболы', callback_data='Обезболы')]
     ]
 
     query = update.callback_query
-    type3 = InlineKeyboardMarkup(buttons)  # клавиатура - объект класса ReplyKeyboardMarkup
+    type_medicine = InlineKeyboardMarkup(buttons)  # клавиатура - объект класса ReplyKeyboardMarkup
     text = 'Что Вас интересует?'
-    query.edit_message_text(text, reply_markup=type3)
+    query.edit_message_text(text, reply_markup=type_medicine)
 
-    return WAIT_TYPE3
+    return WAIT_TYPE_MEDICINE
 
 
-def get_type3(update: Update, context: CallbackContext):
+def get_type_medicine(update: Update, context: CallbackContext):
     query = update.callback_query
     query.answer()
 
@@ -208,10 +211,10 @@ take_handler = ConversationHandler(
         WAIT_TAKE: [CallbackQueryHandler(get_take), command_take_handler],
         WAIT_SEE_AVAILABILITY: [CallbackQueryHandler(get_see_availability), command_take_handler],
         WAIT_PUT: [CallbackQueryHandler(get_put), command_take_handler],
-        WAIT_TYPE: [CallbackQueryHandler(get_type), command_take_handler],
-        WAIT_TYPE1: [CallbackQueryHandler(get_type1), command_take_handler],
-        WAIT_TYPE2: [CallbackQueryHandler(get_type2), command_take_handler],
-        WAIT_TYPE3: [CallbackQueryHandler(get_type3), command_take_handler]
+        WAIT_TYPE_WATER: [CallbackQueryHandler(get_type_water), command_take_handler],
+        WAIT_TYPE_ROPES: [CallbackQueryHandler(get_type_ropes), command_take_handler],
+        WAIT_TYPE_EVERYDAY_LIFE: [CallbackQueryHandler(get_type_everyday_life), command_take_handler],
+        WAIT_TYPE_MEDICINE: [CallbackQueryHandler(get_type_medicine), command_take_handler]
         },  # Состояние
     fallbacks=[]  # Отлов ошибок
 )
