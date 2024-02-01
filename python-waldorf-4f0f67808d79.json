@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "python-waldorf",
+  "private_key_id": "4f0f67808d79bc1846346fff45e0128391b52d52",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCtAk/1KPlGJc2y\nIdeEviPk9H6QaMiZ+fO7s+pFoXkwyAFhEdE31tqhxuatWx3K38Hlcw+ysUS63yuv\n1yNvQ+NUUCHeAk2IOqqdPTbCfLz0bxvSqS5cGYbPB0pqMw9RRsabWbVFa2KRCuUb\nbR8S19dcOmbFH5sRqsb9J0eQFFhbvnF0LsJHTuGJZrfPZ0VoKSjFcBaNFL6JWN9D\nLT5s6LpSVPU2PVDuFeZPwKF51yIjtHkL3dKCyDmwsa0jK+EU0JfIBoiXDUTdk4jU\nJMh7F1CroA0GTsjmqxFP+WDCd7/Fbo6aaakeQH2hIbWKEg6JlUEeu3t2jyRZ1Dca\nPJ2i2XxZAgMBAAECggEAD0kkrrYiYrvqUvJsgUeaEkY2fHnVkiJ5vLwmVw/vjjYi\n8Q71m5Jkb2YMcYVFukFPd1Sq2WXnev9GyTAf6wUQ1nKHW38mly0Kb/69kizFNm+E\nAiEn0xlU8NZlu8EBJHQ1Y0+8wAJp4K4ZafVCiT6qwh+i1DMjrJ7txTuC4MxQtjeV\nv92B/SIYzScWDLTFwPmOgryINCEJoQGLyESaeOrH/ffxjY0orESGKyFPb1HdpmIX\nO+yiAe20BHytkuilYMhkG5lFj/0+rJ/V3s+UH19snHND2oLhijok6fsQeBFheLYi\nwrpWr6I+9yjgRZOVfcz3uAOdJJGePIrW1wmj5YBxBQKBgQDdgAQZ3Y5csVqgajzh\n8AHJsKDajTblj1rqm+Z7V2wRaoPsMUjjlzakTCsPHVg8yhgfjpqKQauQfdlAS9Sq\nWoo27yyjcz1QTY5g+QenAtzP77WiG+2PpAa63bcXDpZyw8Ccx5lOskAz7Tmnc/1D\nLD0umHf+5sHX6VJ3fDzIjOnbkwKBgQDH9Mn5N+Rr8Rc5SQK5oly2nz+54osq9SpL\nZ6OLUyakiiZTa5y3UOUTE5jgmk4Sp+vFQwb7CTn9h/7mvHNGhY4uzMtIi6jBJnbn\nsOa9GMBgWOMb+mzzxQVvVPohIBKSqk4hxQe7aJ1Unq1aNqCab1FfmdHmZXFrtGmb\nVvHdSbyz4wKBgQCTnkadal//fJ92e3cZ6Nd4MIPzQ9vLQDAKXV5M42V9cex71BjM\nvTFIbA7iYt80nEdZeLOb4spRYN4SELep1O96TwoD4MCDLTzveehUsP6yggIeCNjZ\nOyrVDQCBmFJCKB3NHuUYYomRUc9zv0SRqQEZdbm7ItUbbT9trFniGq+ciwKBgHoi\n5MfswwLH9daQ6TA4o4cNSOCjJzyrGhWLDZOJy93PYM+tuMEkkXgQjV4MAspUdag9\nY+Ms5JYfXqzTyVn3ND0T7Mu4OvEYLKMjJB23I7L2OGsbkTdpTgOOFWbsb0vU6Pqp\nnip0IT3R2rNzELCkdED/9P1VU21leuheuEfhxXjfAoGBALUy2g5bffRStlIMraJ1\n4+jlbOo+tZ2xkOIXsuc+51UEl8SAlvkSFdNQEtTWSEDfWoBy8NcwCn1yuZQYzPmw\nzxuoQD/Ntk+8RJXiI/gFPjS9LU7cHa0xp4ixL8ptVdKQHLCWPCvTjWUu/8jYojzr\nufKWKMT1e9Nto0Oloh5zlIHn\n-----END PRIVATE KEY-----\n",
+  "client_email": "gsheets@python-waldorf.iam.gserviceaccount.com",
+  "client_id": "111437084361395428917",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gsheets%40python-waldorf.iam.gserviceaccount.com"
+}
