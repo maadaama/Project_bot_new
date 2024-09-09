@@ -2,7 +2,7 @@ import pygsheets
 
 
 class Item:
-    def __init__(self, item_id, direction, category, item_type, state, notes, place):
+    def __init__(self, item_id, direction, category, item_type, state, notes, place, new_place):
         self.id = item_id
         self.direction = direction
         self.category = category
@@ -10,6 +10,7 @@ class Item:
         self.state = state
         self.notes = notes
         self.place = place
+        self.new_place = new_place
 
 
 TABLE = '1QQMIHHH7G8uzqAw47xNHw_rKxLxRpDYP_663fSaUeug'  # ключ страницы инвентаризации
@@ -26,6 +27,7 @@ items_columns = {
     'состояние': 7,
     'примечание': 8,
     'местоположение': 9,
+    'местоположение (итог)': 16
 }
 
 info_columns = {

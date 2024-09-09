@@ -6,6 +6,11 @@ from key import TOKEN
 from take_thing import take_thing_handler
 from see_availability import see_availability_handler
 from put_thing import put_thing_handler
+import logging
+
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 def main():
@@ -29,8 +34,8 @@ def main():
 
     # Начать бесконечный опрос Телеграмма на предмет обновлений
     updater.start_polling()
-    print(updater.bot.getMe())
-    print('Бот запущен')
+    logger.info(updater.bot.getMe())
+    logger.info('Бот запущен')
     updater.idle()
 
 
@@ -40,8 +45,8 @@ def do_help(update, context: CallbackContext):  # запускаем бота
         'Я помогу тебе в работе со складом',
         'Для этого выбери одну из команд:',
         '/take_thing - взять вещь',
-        '/see_availability - посмотреть наличие',
-        '/put_thing - взять вещь',
+        # '/see_availability - посмотреть наличие',
+        # '/put_thing - взять вещь',
     ]
     text = '\n'.join(text)  # Собираем строки в текст через разделитель
     update.message.reply_text(text)
@@ -53,8 +58,8 @@ def do_start(update, context: CallbackContext):  # запускаем бота
         'Я помогу тебе в работе со складом',
         'Для этого выбери одну из команд:',
         '/take_thing - взять вещь',
-        '/see_availability - посмотреть наличие',
-        '/put_thing - взять вещь',
+        # '/see_availability - посмотреть наличие',
+        # '/put_thing - взять вещь',
     ]
     text = '\n'.join(text)  # Собираем строки в текст через разделитель
     update.message.reply_text(text)

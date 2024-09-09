@@ -18,7 +18,7 @@ def find_cat(direction):
 def find_item(category):
     result = []
     col = items_columns['категория'] - 1
-    data_range = pygsheets.DataRange(start='A4', end='I50', worksheet=items_page)  # TODO нужен рефакторинг
+    data_range = pygsheets.DataRange(start='A4', end='P50', worksheet=items_page)  # TODO нужен рефакторинг
     for row in data_range:
         val = row[col].value
         if val == category:
@@ -32,8 +32,23 @@ def find_item(category):
     return result
 
 
-def change_item(date, item_id, place):
-    pass  # TODO прописать функцию
+def change_item(date, item, place, name):
+    result = []
+    col = 1
+    row_count = 5
+    data_range = pygsheets.DataRange(start='B5', end='P100', worksheet=info_page)
+    for row in data_range:
+        val = row[col].value
+        row_count += 1
+        if not val:
+            row[0].value = date
+            row[1].value = item.id
+            row[5].value = place
+            row[8].value = item.state
+            row[11].value = item.notes
+            row[14].value = name
+            print('Элемент записан')
+            break
 
 
 if __name__ == '__main__':
@@ -44,8 +59,10 @@ if __name__ == '__main__':
     #         print(items_page.cell((row, col)).value, end=' ')
     #     print()
 
-    print(find_cat('вода'))
+    print(find_cat('верёвки'))
     print(find_item('карабин'))
+    test_item = Item(1234, 'верёвки', 'веревка', 'аква', 'хорошее', '20м фиолетаова', 'Склад')
+    change_item('02.02.2024', test_item, 'ДВ', 'ДВ')
 
     # Открываем таблицу с помощью семейства методов open_<bla-bla-bla>
     #
